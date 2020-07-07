@@ -1,3 +1,5 @@
+# Linux使用ragel进行文本快速解析
+
 [Linux使用ragel进行文本快速解析（上）](https://blog.csdn.net/stayneckwind2/java/article/details/89285762)
 
 ## 前言
@@ -38,34 +40,9 @@ Ragel的核心语言包括正则表达式运算符、动作（action）嵌入运
 
 ### 状态机（mechine）概念
 
-Ragel 对于字符串的解析，是用一种结合正则表达式的机器语言来描述，可表现为内嵌的状态机语言规范。这种机器语言通过扫描输入的字符串，匹配状态机的特定状态进行处理，当扫描结束的时候，处理也随之完成。这种有限状态机语言可以由数行代码完成，使用标识符 %%{ 开始、使用 }%% 结束，也可以使用 %% 开始的一行进行实现。
+Ragel 对于字符串的解析，是用一种结合正则表达式的机器语言来描述，可表现为内嵌的状态机语言规范。这种机器语言通过扫描输入的字符串，匹配状态机的特定状态进行处理，当扫描结束的时候，处理也随之完成。这种有限状态机语言可以由数行代码完成，使用标识符 `%%{` 开始、使用 `}%%` 结束，也可以使用 `%%` 开始的一行进行实现。
 
-下面看一个简单例子，该例子判断输入字符串中是否含有’foo’或’bar’字符：
-
-```rl
-#include <string.h>
-#include <stdio.h>
-%%{
-machine foo;
-main :=
-	( ’foo’ | ’bar’ )
-	0 @{ res = 1; };
-}%%
-%% write data;
-
-int main( int argc, char **argv )
-{
-	int cs, res = 0;
-	if ( argc > 1 ) {
-		char *p = argv[1];
-		char *pe = p + strlen(p) + 1;
-		%% write init;
-		%% write exec;
-	}
-	printf("result = %i\n", res );
-	return 0;
-}
-```
+看一个[简单例子](foo_bar.rl)，该例子判断输入字符串中是否含有’foo’或’bar’字符：
 
 Ragel语法的文件为rl后缀命名，内部expression支持正则表达式的语法:
 
@@ -103,33 +80,7 @@ action ActionName {
 1. \! （err）发生错误时的动作
 1. \^ （lerr）本地错误时的动作
 
-下面列举一个例子来表示如何处理错误，在解析失败时时进行信息提示，并跳转到错误处理，当错误处理完成后，继续进入主线处理。
-
-```rl
-action cmd_err {
-    printf( "command error\n" );
-    fhold; fgoto line;
-}
-action from_err {
-    printf( "from error\n" );
-    fhold; fgoto line;
-}
-action to_err {
-    printf( "to error\n" );
-    fhold; fgoto line;
-}
-
-line := [^\n]* ’\n’ @{ fgoto main; };
-
-main := (
-    (
-        ’from’ @err(cmd_err)
-            ( ws+ address ws+ date ’\n’ ) $err(from_err) |
-        ’to’ @err(cmd_err)
-            ( ws+ address ’\n’ ) $err(to_err)
-    )
-)*;
-```
+[一个例子](err.rl)来表示如何处理错误，在解析失败时时进行信息提示，并跳转到错误处理，当错误处理完成后，继续进入主线处理。
 
 ## 流程设计
 
@@ -144,3 +95,31 @@ main := (
 ## 案例实践
 
 [ragel_atoi.rl](ragel_atoi.rl) 提供了一个读取字符串转换成整数的例子
+
+main函数循环获取输入数据，子函数 ragel_atoi 进行字符串处理，核心语句为：
+
+`main := ( '-'@see_neg | '+' )? ( digit @add_digit )+ '\n';`
+
+- `action see_neg` 处理首字符`-/+` 正数、负数的动作，
+- `action add_digit` 则进行后续数字的扫描，进行十进制累加。
+- 最后字符串读取到’\n’，表示结束，则退出子函数。
+
+### 编译
+
+类似于protoc命令，通过执行ragel，将rl文件转换为c语言代码：
+
+- `ragel -G2 ragel_atoi.rl`
+- gcc -o ragel_atoi ragel_atoi.c
+
+我们可以看一下转换后"晦涩难懂"而又"效率至上"的代码[ragel_atoi.c](ragel_atoi.c)
+
+[go version](https://github.com/kbandla/ragel/blob/master/examples/go/atoi.rl)
+
+## 结论
+
+Ragel 体现了一种代码生成代码的特点，字符串的处理中，正则表达式是人类自然语言最好的提醒，同时又能通过转换成高效的计算机语言，Ragel作为中间工具将两者完美的结合起来了
+
+## Linux使用ragel进行文本快速解析（下）
+
+[Linux使用ragel进行文本快速解析（下）](https://blog.csdn.net/stayneckwind2/article/details/89290602)
+[awkemu.rl](https://github.com/kbandla/ragel/blob/master/examples/awkemu.rl)

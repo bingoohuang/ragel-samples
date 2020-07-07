@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 %%{
     machine atoi;
@@ -11,11 +12,11 @@ long long ragel_atoi(char *str)
     char *p = str, *pe = str + strlen(str);
     int cs;
     long long val = 0;
-    bool neg = false;
+    int neg = 0;
 
     %%{
         action see_neg {
-            neg = true;
+            neg = 1;
         }
 
         action add_digit {
@@ -29,7 +30,7 @@ long long ragel_atoi(char *str)
         write exec;
     }%%
 
-    if ( neg )
+    if ( neg == 1 )
         val = -1 * val;
 
     if ( cs < atoi_first_final )
@@ -40,7 +41,7 @@ long long ragel_atoi(char *str)
 
 int main(int argc, char *argv[])
 {
-    char buf[SIZE_LINE_NORMAL];
+    char buf[100];
 
     while (fgets(buf, sizeof(buf), stdin) != 0) {
         long long value = ragel_atoi(buf);
