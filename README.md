@@ -1,6 +1,30 @@
 # ragel-samples
 
-regel samples
+Ragel是有限状态机编译器和解析器生成器。最初，Ragel支持C，C ++和Assembly源代码的输出，现已扩展为支持其他几种语言，包括Objective C，D，Go，Ruby和Java。其他语言支持也在开发中。它支持从正则表达式和/或状态图生成表或控制流驱动的状态机，还可以通过最长匹配方法构建词法分析器。
+
+## ragel的意思
+
+ragel: [Urban](https://www.urbandictionary.com/define.php?term=ragel) Man in Arabic Egyptian Language. eg. I am a man = i am Ragel
+
+[![image](https://user-images.githubusercontent.com/1940588/86868787-f48c7900-c107-11ea-9458-854d4bb4dcda.png)](https://translate.google.com/?newwindow=1&sxsrf=ALeKk03JZVvBOZ9NBKqGuY2oDa3lxZ97iQ:1594176086733&gs_lcp=CgZwc3ktYWIQAzIMCCMQsQIQJxBGEP8BOgQIIxAnOgQIABAeOgYIABAIEB46BggAEAUQHjoMCCMQsAIQJxBGEP8BOgYIABANEB46CAgAEAgQDRAeOggIABANEAUQHlDt0QFYid0BYPreAWgAcAB4AIABmAGIAbUFkgEDMC41mAEAoAEBqgEHZ3dzLXdpeg&uact=5&um=1&ie=UTF-8&hl=zh-CN&client=tw-ob#auto/zh-CN/ragel)
+
+## ragel的基本信息
+
+来自[Ragel](https://en.wikipedia.org/wiki/Ragel)
+
+| Information      | Information value                                                                                     |
+|------------------|----------------------------------------------------------------------------------------------------------------|
+| Developer        | Adrian Thurston                                                                                     |
+| Stable release   | 6.10 / March 24, 2017; 3 years ago                                                                            |
+| Preview release  | 7.0.0.12 / May 14, 2019; 13 months ago                                                                      |
+| Repository       | github.com/ehdtee/colm\-suite                                                                                 |
+| Written in       | C++                                                                                                          |
+| Operating system | [Unix-like](https://en.wikipedia.org/wiki/Unix-like), Windows                                                                                            |
+| Type             | [State machine](https://en.wikipedia.org/wiki/Finite-state_machine) compiler                                                                                         |
+| License          | "Ragel 6 remains under GPL v2 \[generated code\] covered by the MIT \(or GPL v2\)"\.\[2\] Ragel 7: MIT License |
+| Website          | www.colm.net/open-source/ragel/                                                                             |
+
+## regel samples
 
 1. [Setup](https://medium.com/@dgryski/speeding-up-regexp-matching-with-ragel-4727f1c16027)
     - `apt-get install ragel`
