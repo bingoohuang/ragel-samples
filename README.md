@@ -10,6 +10,13 @@ Ragel是有限状态机编译器和解析器生成器。最初，Ragel支持C，
 
 ## ragel的意思
 
+[Adrian关于ragel的发音说明](http://www.colm.net/pipermail/ragel-users/2010-April/002874.html)
+
+Hi Landon, I usually say something like "rah-ghel."\(reidʒil\) I had no phonetic
+basis for it when I picked it. I just took my nickname "Age" and wrapped
+it in the R and L of regular languages. I've since learned that it means
+"man" in Arabic.
+
 ragel: [Urban](https://www.urbandictionary.com/define.php?term=ragel) Man in Arabic Egyptian Language. eg. I am a man = i am Ragel
 
 [![image](https://user-images.githubusercontent.com/1940588/86868787-f48c7900-c107-11ea-9458-854d4bb4dcda.png)](https://translate.google.com/?newwindow=1&sxsrf=ALeKk03JZVvBOZ9NBKqGuY2oDa3lxZ97iQ:1594176086733&gs_lcp=CgZwc3ktYWIQAzIMCCMQsQIQJxBGEP8BOgQIIxAnOgQIABAeOgYIABAIEB46BggAEAUQHjoMCCMQsAIQJxBGEP8BOgYIABANEB46CAgAEAgQDRAeOggIABANEAUQHlDt0QFYid0BYPreAWgAcAB4AIABmAGIAbUFkgEDMC41mAEAoAEBqgEHZ3dzLXdpeg&uact=5&um=1&ie=UTF-8&hl=zh-CN&client=tw-ob#auto/zh-CN/ragel)
