@@ -1,5 +1,7 @@
 # ragel-samples
 
+看到[plugins/parsers/influx/machine.go.rl](https://github.com/influxdata/telegraf/blob/master/plugins/parsers/influx/machine.go.rl), 不知道.rl是什么文件，由此了解了一下。
+
 Ragel是有限状态机编译器和解析器生成器。最初，Ragel支持C，C ++和Assembly源代码的输出，现已扩展为支持其他几种语言，包括Objective C，D，Go，Ruby和Java。其他语言支持也在开发中。它支持从正则表达式和/或状态图生成表或控制流驱动的状态机，还可以通过最长匹配方法构建词法分析器。
 
 ## ragel的意思
