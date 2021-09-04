@@ -6,7 +6,7 @@
 
 [![image](https://user-images.githubusercontent.com/1940588/86869229-c6f3ff80-c108-11ea-9d6a-878a81732c90.png)](https://explainshell.com/explain?cmd=ragel+-Z+-G2+-e+-o+machine.go+machine.go.rl)
 
-Ragel是有限状态机编译器和解析器生成器。最初，Ragel支持C，C ++和Assembly源代码的输出，现已扩展为支持其他几种语言，包括Objective C，D，Go，Ruby和Java。其他语言支持也在开发中。它支持从正则表达式和/或状态图生成表或控制流驱动的状态机，还可以通过最长匹配方法构建词法分析器。
+[Ragel]( https://github.com/adrian-thurston/ragel) 是有限状态机编译器和解析器生成器。最初，Ragel 支持 C，C ++ 和 Assembly 源代码的输出，现已扩展为支持其他几种语言，包括Objective C，D，Go，Ruby和Java。其他语言支持也在开发中。它支持从正则表达式和/或状态图生成表或控制流驱动的状态机，还可以通过最长匹配方法构建词法分析器。
 
 ## ragel的意思
 
